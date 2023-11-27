@@ -61,7 +61,7 @@ public class Calculator {
                     x = a * c;
                     break;
                 default:
-                    System.err.println("допустимые символы + - * /");
+                    System.err.println("Вы ввели что-то неправильно!");
 
             }
             System.out.println("Результат = " + x);
