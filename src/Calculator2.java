@@ -1,54 +1,93 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Calculator2 {
+public class Calculator {
     public static void main(String[] args) {
-
-        Scanner primer = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите пример");
-        String stroka = primer.nextLine();
-        primer.close();
+        String str = scanner.nextLine();
+        scanner.close();
+        String[] s = str.split(" ");
 
-        String[] s = stroka.split(" ");
-        Short a = 0;
+        for (int i = 1; i < 11; i++) {
+            String b = s[0];
+            String n = String.valueOf(Rim.values()[i]);
+            if (b.equals(n)) {
+                int num1 = Rim.values()[i].ordinal();
+                for (int j = 1; j < 11; j++) {
+                    String l = s[2];
+                    String v = String.valueOf(Rim.values()[j]);
+                    if (l.equals(v)) {
+                        int num2 = Rim.values()[j].ordinal();
+                        String operation = s[1];
+                        int result = calcRim(num1, num2, operation);
+                            if (result>0) {
+                                String result1 = String.valueOf(Rim.values()[result]);
+                                System.out.println("Результат =  " + result1);
+                            }else {
+                                System.out.println("Недопустимое действо с римскими цифрами");
+                            }
+                    }
+
+                }
+            }
+
+        }
+        int a = 11;
         try {
-            a = Short.parseShort(s[0]);
-
+            a = Integer.parseInt(s[0]);
         } catch (NumberFormatException e) {
-            System.err.println("неправильный формат числа1");
         }
 
-        Short c = 0;
+        int c = 11;
         try {
-            c = Short.parseShort(s[2]);
-
+            c = Integer.parseInt(s[2]);
         } catch (NumberFormatException e) {
-            System.err.println("неправильный формат числа2");
         }
-if (a >=0 && a <=10 && c>=0 && c <=10) {
+        if (a >=0 && a <=10 && c>=0 && c <=10) {
 
-    int x = 0;
-    switch (s[1]) {
-        case "+":
-            x = a + c;
-            break;
-        case "-":
-            x = a - c;
-            break;
-        case "/":
-            x = a / c;
-            break;
-        case "*":
-            x = a * c;
-            break;
-        default:
-            System.out.println("допустимые символы + - * /");
+            int x = 0;
+            switch (s[1]) {
+                case "+":
+                    x = a + c;
+                    break;
+                case "-":
+                    x = a - c;
+                    break;
+                case "/":
+                    x = a / c;
+                    break;
+                case "*":
+                    x = a * c;
+                    break;
+                default:
+                    System.err.println("допустимые символы + - * /");
+
+            }
+            System.out.println("Результат = " + x);
+        }
 
     }
-    System.out.println("Результат = " + x);
+
+    public static int calcRim(int num1, int num2, String operation) {
+        int result = 0;
+        switch (operation) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("допустимые символы + - * /");
+        }
+        return result;
+    }
+
 }
-else System.out.println("Допускаются значения от 0 до 10!");
-
-    }
-
-    }
