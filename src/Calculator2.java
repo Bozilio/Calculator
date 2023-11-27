@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите пример");
+        System.out.println("Введите пример. Допустимый формат: "число действие число" например 3 + 6);
         String str = scanner.nextLine();
         scanner.close();
         String[] s = str.split(" ");
